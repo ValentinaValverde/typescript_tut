@@ -1,5 +1,5 @@
 //FC is a type to create a component
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import axios from "axios";
 import { AppProps, Users } from "./App.types";
 
@@ -7,6 +7,7 @@ const App: FC<AppProps> = ({ title }) => {
   //declares users as an array of objects of type Users
   const [users, setUsers] = useState<Users[]>([]);
   const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState("");
 
   //calling 10 random names on button click from an API
   const handleClick = async () => {
@@ -22,10 +23,16 @@ const App: FC<AppProps> = ({ title }) => {
     }
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
+  };
+
   return (
     <div>
       <h1>{title}</h1>
       <button onClick={handleClick}>Show Users</button>
+      <input type="text" onChange={handleChange} />
+      <p>{username}</p>
       {loading && <p>Loading...</p>}
       <ul>
         {users.map(({ login, name, email }) => {
