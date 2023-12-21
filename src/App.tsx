@@ -30,10 +30,12 @@ const App: FC<AppProps> = ({ title }) => {
   return (
     <div>
       <h1>{title}</h1>
-      <button onClick={handleClick}>Show Users</button>
-      <input type="text" onChange={handleChange} />
-      <p>{username}</p>
-      {loading && <p>Loading...</p>}
+      <div className="div">
+        <button onClick={handleClick}>Show Users</button>
+        <input type="text" onChange={handleChange} />
+        <p>{username}</p>
+        {loading && <p>Loading...</p>}
+      </div>
       <ul>
         {users.map(({ login, name, email }) => {
           return (

@@ -13,3 +13,10 @@
 h1 {
   text-align: center;
 }
+
+.div {
+  margin-left: 200px;
+  margin-right: 200px;
+  display: flex;
+  flex-direction: column;
+}
