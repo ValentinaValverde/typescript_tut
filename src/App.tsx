@@ -1,29 +1,7 @@
 //FC is a type to create a component
 import { FC, useEffect, useState } from "react";
 import axios from "axios";
-
-//you can use "interface" instead of "type" to declare component types
-//this defines the type of the prop
-type AppProps = {
-  title: string;
-};
-
-//defining the types of the data called from the API
-//example, when calling first.name
-export interface Name {
-  first: string;
-  last: string;
-}
-
-export interface Login {
-  uuid: string;
-}
-
-export interface Users {
-  name: Name;
-  login: Login;
-  email: string;
-}
+import { AppProps, Users } from "./App.types";
 
 const App: FC<AppProps> = ({ title }) => {
   //declares users as an array of objects of type Users
