@@ -8,28 +8,24 @@ const App: FC<AppProps> = ({ title }) => {
   const [users, setUsers] = useState<Users[]>([]);
   const [loading, setLoading] = useState(false);
 
-  //calling 10 random names from an API
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get(
-          "https://randomuser.me/api/?results=10"
-        );
-        console.log("DATA", data);
-        setUsers(data.results);
-      } catch (error) {
-        console.log("ERROR", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getUsers();
-  }, []);
+  //calling 10 random names on button click from an API
+  const handleClick = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get("https://randomuser.me/api/?results=10");
+      console.log("DATA", data);
+      setUsers(data.results);
+    } catch (error) {
+      console.log("ERROR", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
       <h1>{title}</h1>
+      <button onClick={handleClick}>Show Users</button>
       {loading && <p>Loading...</p>}
       <ul>
         {users.map(({ login, name, email }) => {
