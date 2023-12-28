@@ -19,6 +19,7 @@ const App: FC<AppProps> = ({ title }) => {
     } catch (error) {
       console.log("ERROR", error);
     } finally {
+      3;
       setLoading(false);
     }
   };
